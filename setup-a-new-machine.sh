@@ -52,10 +52,10 @@ cp ~/.bash_history ~/migration # back it up for fun?
 # Current Chrome tabs via OneTab
 
 # iTerm settings.
-  # Prefs, General, Use settings from Folder
+	# Prefs, General, Use settings from Folder
 
 # Finder settings and TotalFinder settings
-#   Not sure how to do this yet. Really want to.
+	# Not sure how to do this yet. Really want to.
 
 
 
@@ -68,15 +68,21 @@ cp ~/.bash_history ~/migration # back it up for fun?
 #
 # homebrew!
 #
-# (google machines are funny so i have to do this. everyone else should use the regular thang)
-mkdir $HOME/.homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
-export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH // ?? Do I need to do this on my machine ??
 #
-# install all the things
-./brew.sh
-./brew-cask.sh
+# install all the things // I don't have this set up yet. I need to create my own custom files
+#./brew.sh
+#./brew-cask.sh
 
 
+# Zsh/Oh-My-ZSH
+curl -L http://install.ohmyz.sh | sh
+# // Need to configure the .zschrc file to set up preferences and install plugins
+
+
+# Grunt :: Install Grunt globally
+npm install -g grunt-cli
 
 
 # github.com/jamiew/git-friendly
@@ -108,15 +114,17 @@ git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-but
 # * then you grab public URL and send off your video message in a heartbeat.
 
 
-# for the c alias (syntax highlighted cat)
-sudo easy_install Pygments
+# for the c alias (syntax highlighted cat) // Dont think that I need this
+# sudo easy_install Pygments
 
 
-# change to bash 4 (installed by homebrew)
-BASHPATH=$(brew --prefix)/bin/bash
-sudo echo $BASHPATH >> /etc/shells
-chsh -s $BASHPATH # will set for current user only.
-echo $BASH_VERSION # should be 4.x not the old 3.2.X
+# change to bash 4 (installed by homebrew) 
+# // tried to insall this and didn't make it past the first line and then I got a message: 
+# zsh: permission denied: /etc/shells -- I didn't want to change permissions right now on this file
+#BASHPATH=$(brew --prefix)/bin/bash
+#sudo echo $BASHPATH >> /etc/shells
+#chsh -s $BASHPATH # will set for current user only.
+#echo $BASH_VERSION # should be 4.x not the old 3.2.X
 # Later, confirm iterm settings aren't conflicting.
 
 
@@ -124,12 +132,13 @@ echo $BASH_VERSION # should be 4.x not the old 3.2.X
 
 # software licenses like sublimetext
 
-# setting up the sublime symlink
-ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-
+# setting up the sublime symlink // Did mine a little differently :: see link
+# http://olivierlacan.com/posts/launch-sublime-text-3-from-the-command-line/
+ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/usr/local/bin/sublime
 
 
 # go read mathias, paulmillr, gf3, alraa's dotfiles to see what to update with.
+
 
 # set up osx defaults
 #   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
@@ -140,4 +149,3 @@ sh .osx
 #   put/move git credentials into ~/.gitconfig.local
 #   http://stackoverflow.com/a/13615531/89484
 ./symlink-setup.sh
-
