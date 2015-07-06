@@ -141,11 +141,12 @@ ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/usr/lo
 
 
 # set up osx defaults
-#   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
+# 	maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
 sh .osx
 
 
 # symlinks!
-#   put/move git credentials into ~/.gitconfig.local
+#   put/move git credentials into ~/.gitconfig.local 
+#   https://help.github.com/articles/caching-your-github-password-in-git/
 #   http://stackoverflow.com/a/13615531/89484
 ./symlink-setup.sh
